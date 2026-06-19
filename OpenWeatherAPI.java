@@ -7,11 +7,11 @@ public abstract class OpenWeatherAPI {
 
     private static final String API_KEY = "ac7920c6ae71090a87e23a78af9decb7";
 
-    public static String getCurrentWeather(){
+    public static CurrentWeatherData getCurrentWeather(){
         return getCurrentWeather("Osaka");
     }
 
-    public static String getCurrentWeather (String city) {
+    public static CurrentWeatherData getCurrentWeather (String city) {
 
         String url = "https://api.openweathermap.org/data/2.5/weather?q="
                 + city + "&appid=" + API_KEY + "&units=metric&lang=ja";
@@ -32,64 +32,65 @@ public abstract class OpenWeatherAPI {
         System.out.println(json);
 
         // ===== JSON手動パース =====
+        CurrentWeatherData data = new CurrentWeatherData();
 
         // coord
-        double lon = extractDouble(json, "\"lon\":", ",");
-        double lat = extractDouble(json, "\"lat\":", "}");
+        data.coordLon = extractDouble(json, "\"lon\":", ",");
+        data.coordLat = extractDouble(json, "\"lat\":", "}");
 
         // weather[0]
-        double weatherId = extractDouble(json, "\"id\":", ",");
-        String weatherMain = extractString(json, "\"main\":\"", "\"");
-        String weatherDescription = extractString(json, "\"description\":\"", "\"");
-        String weatherIcon = extractString(json, "\"icon\":\"", "\"");
+        data.weatherId = (int)extractDouble(json, "\"id\":", ",");
+        data.weatherMain = extractString(json, "\"main\":\"", "\"");
+        data.weatherDescription = extractString(json, "\"description\":\"", "\"");
+        data.weatherIcon = extractString(json, "\"icon\":\"", "\"");
 
         // base
-        String base = extractString(json, "\"base\":\"", "\"");
+        data.base = extractString(json, "\"base\":\"", "\"");
 
         // main
-        double temp = extractDouble(json, "\"temp\":", ",");
-        double feelsLike = extractDouble(json, "\"feels_like\":", ",");
-        double tempMin = extractDouble(json, "\"temp_min\":", ",");
-        double tempMax = extractDouble(json, "\"temp_max\":", ",");
-        double pressure = extractDouble(json, "\"pressure\":", ",");
-        double humidity = extractDouble(json, "\"humidity\":", ",");
-        double seaLevel = extractDouble(json, "\"sea_level\":", ",");
-        double grndLevel = extractDouble(json, "\"grnd_level\":", "}");
+        data.mainTemp = extractDouble(json, "\"temp\":", ",");
+        data.mainFeelLike = extractDouble(json, "\"feels_like\":", ",");
+        data.mainTempMin = extractDouble(json, "\"temp_min\":", ",");
+        data.mainTempMax = extractDouble(json, "\"temp_max\":", ",");
+        data.mainPressure = (int)extractDouble(json, "\"pressure\":", ",");
+        data.mainHumidity = (int)extractDouble(json, "\"humidity\":", ",");
+        data.mainSeaLevel = (int)extractDouble(json, "\"sea_level\":", ",");
+        data.mainGrnd_Level = (int)extractDouble(json, "\"grnd_level\":", "}");
 
         // visibility
-        double visibility = extractDouble(json, "\"visibility\":", ",");
+        data.visibility = (int)extractDouble(json, "\"visibility\":", ",");
 
         // wind
-        double windSpeed = extractDouble(json, "\"speed\":", ",");
-        double windDeg = extractDouble(json, "\"deg\":", ",");
-        double windGust = extractDouble(json, "\"gust\":", "}");
+        data.windSpeed = extractDouble(json, "\"speed\":", ",");
+        data.windDeg = (int)extractDouble(json, "\"deg\":", ",");
+        data.windGust = extractDouble(json, "\"gust\":", "}");
 
         // clouds
-        double cloudsAll = extractDouble(json, "\"all\":", "}");
+        data.CloudsAll = (int)extractDouble(json, "\"all\":", "}");
 
         // dt
-        double dt = extractDouble(json, "\"dt\":", ",");
+        data.dt = (int)extractDouble(json, "\"dt\":", ",");
 
         // sys
-        double sysType = extractDouble(json, "\"type\":", ",");
-        double sysId = extractDouble(json, "\"id\":", ",");
-        String country = extractString(json, "\"country\":\"", "\"");
-        double sunrise = extractDouble(json, "\"sunrise\":", ",");
-        double sunset = extractDouble(json, "\"sunset\":", "}");
+        data.sysType = (int)extractDouble(json, "\"type\":", ",");
+        data.sysId = (int)extractDouble(json, "\"id\":", ",");
+        data.sysCounty = extractString(json, "\"country\":\"", "\"");
+        data.sysSunrise = (int)extractDouble(json, "\"sunrise\":", ",");
+        data.sysSunset = (int)extractDouble(json, "\"sunset\":", "}");
 
         // timezone
-        double timezone = extractDouble(json, "\"timezone\":", ",");
+        data.timezone = (int)extractDouble(json, "\"timezone\":", ",");
 
         // city information
-        double cityId = extractDouble(json, "\"id\":", ",");
-        String cityName = extractString(json, "\"name\":\"", "\"");
+        data.id = (int)extractDouble(json, "\"id\":", ",");
+        data.name = extractString(json, "\"name\":\"", "\"");
 
         // response code
-        double cod = extractDouble(json, "\"cod\":", "}");
+        data.cod = (int)extractDouble(json, "\"cod\":", "}");
 
 
 
-        return weatherMain;
+        return data;
     }
 
     // 数値抽出

@@ -1,44 +1,44 @@
 public class CurrentWeatherData {
-    private double coordLon;
-    private double coordLat;
+    protected double coordLon;
+    protected double coordLat;
 
-    private int weatherId;
-    private String weatherMain;
-    private String weatherDescription;
-    private String weatherIcon;
+    protected int weatherId;
+    protected String weatherMain;
+    protected String weatherDescription;
+    protected String weatherIcon;
     
-    private String base;
+    protected String base;
 
-    private double mainTemp;
-    private double mainFeelLike;
-    private double mainTempMin;
-    private double mainTempMax;
-    private int mainPressure;
-    private int mainHumidity;
-    private int mainSeaLevel;
-    private int mainGrnd_Level;
+    protected double mainTemp;
+    protected double mainFeelLike;
+    protected double mainTempMin;
+    protected double mainTempMax;
+    protected int mainPressure;
+    protected int mainHumidity;
+    protected int mainSeaLevel;
+    protected int mainGrnd_Level;
 
-    private int visibility;
+    protected int visibility;
 
-    private double windSpeed;
-    private int windDeg;
-    private double windGust;
+    protected double windSpeed;
+    protected int windDeg;
+    protected double windGust;
     
-    private int CloudsAll;
+    protected int CloudsAll;
 
-    private int dt;
+    protected int dt;
 
-    private int sysType;
-    private int sysId;
-    private String sysCounty;
-    private int sysSunrise;
-    private int sysSunset;
+    protected int sysType;
+    protected int sysId;
+    protected String sysCounty;
+    protected int sysSunrise;
+    protected int sysSunset;
 
-    private int timezone;
+    protected int timezone;
 
-    private int id;
+    protected int id;
 
-    private String name;
+    protected String name;
     
-    private int cod;
+    protected int cod;
 }

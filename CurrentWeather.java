@@ -17,16 +17,43 @@ public abstract class CurrentWeather extends Object {
     
     public static CurrentWeather getInstance(){
 
-        String weather = OpenWeatherAPI.getCurrentWeather();
+        CurrentWeatherData weather = OpenWeatherAPI.getCurrentWeather();
 
-        switch (weather) {
-            case "晴れ":
+        switch (weather.weatherMain) {
+            case "Thunderstorm":
+                return new Sunny();
+            case "Drizzle":
+                return new Sunny();
+            case "Rain":
+                return new Sunny();
+            case "Snow":
+                return new Sunny();
+            case "Mist":
+                return new Sunny();
+            case "Smoke":
+                return new Sunny();
+            case "Haze":
+                return new Sunny();
+            case "Dust":
+                return new Sunny();
+            case "Fog":
+                return new Sunny();
+            case "Sand":
+                return new Sunny();
+            case "Ash":
+                return new Sunny();
+            case "Squall":
+                return new Sunny();
+            case "Tornado":
+                return new Sunny();
+            case "Clear":
                 return new Sunny();
             case "Clouds":
-                return new Cloudy();
+                return new Sunny();
             default:
                 return null;
         }
+
         
     }
 
