@@ -11,13 +11,17 @@ public class WheatherManager extends Object {
             System.out.print("COMMAND:"); command = sc.nextLine();
 
             switch (command) {
-                case "currentweather":
+                case "weather":
                     Weather wheather = Weather.getInstance(); 
                     wheather.perform();
                     break;
 
+                case "description":
+                    System.out.println("You can get the current weather forecast for Osaka ONLY.");
+                    break;
+
                 case "help":
-                    System.out.println("command:currentweather, help, exit");
+                    System.out.println("command:weather, description, help, exit");
                     break;
 
                 case "exit":

@@ -87,6 +87,9 @@ public abstract class OpenWeatherAPI {
         // response code
         data.cod = (int)extractDouble(json, "\"cod\":", "}");
 
+        // rain
+        data.rain1h = extractDouble(json, "\"1h\":", ",");
+        data.rain3h = extractDouble(json, "\"3h\":", "}");
 
 
         return data;

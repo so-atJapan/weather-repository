@@ -41,4 +41,7 @@ public class CurrentWeatherData {
     protected String name;
     
     protected int cod;
+
+    protected double rain1h;
+    protected double rain3h;
 }

@@ -1,8 +1,7 @@
-@startuml
+@startuml Weather
 hide empty members
 
 ' 天気
-
 abstract class Weather {
     - time : Calendar
     - temperature : double
@@ -17,42 +16,11 @@ class Cloudy {
 class Rain {
     - precipitation : double
 }
-class Snow {
-}
-class Typhoon {
-    - Location - int[]
-    - Pressure - int
-}
 
-
-' 警報
-
-abstract class Warning {
-    - name : String
-}
-
-class WindWarning {
-
-}
-class HeavyRainWarning {
-
-}
-class ThunderstormWarning {
-
-}
-class HeavySnowWarning {
-
-}
 
 Weather <|-- Sunny
 Weather <|-- Cloudy
-Cloudy <|-- Rain
-Cloudy <|-- Snow
-Rain <|-- Typhoon
+Weather <|-- Rain
 
-Warning <|-- WindWarning
-Warning <|-- HeavyRainWarning
-Warning <|-- ThunderstormWarning
-Warning <|-- HeavySnowWarning
 
 @enduml

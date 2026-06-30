@@ -1,7 +1,7 @@
 import java.util.Calendar;
 
 public abstract class Weather extends Object {
-    protected WeatherEnum weatherType = null;
+    protected String weatherType = null;
     protected CurrentWeatherData currentWeatherdData = null;
     protected Calendar time = Calendar.getInstance();
 
@@ -61,9 +61,11 @@ public abstract class Weather extends Object {
 
     public abstract String getMessage();
     
+    public abstract String getData(); 
 
     @Override
-    public abstract String toString();
-
+    public String toString() {
+        return this.getData();
+    }
 
 }
